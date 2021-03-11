@@ -21,7 +21,7 @@ let package = Package(
         // Targets can depend on other targets in this package, and on products in packages this package depends on.
         .target(
             name: "DJiRData",
-            dependencies: []),
+            dependencies: ["DJEncoding"]),
         .testTarget(
             name: "DJiRDataTests",
             dependencies: ["DJiRData", "DJEncoding"],
