@@ -1,5 +1,6 @@
 import XCTest
 @testable import DJiRData
+import DJiRDataTestResources
 import Foundation
 
 class DJiRDataCSVEventResultTests: XCTestCase {
@@ -7,7 +8,7 @@ class DJiRDataCSVEventResultTests: XCTestCase {
     // MARK: - Regular Data
     
     func test_Oval_NoTeam_SingleClass_NoClubPoints_NoDivision_LapTimeLessThan1Minute_Unofficial_Practice() {
-        let data = Resources
+        let data = DJiRDataTestResources
             .CSVEventResult
             .Oval_NoTeam_SingleClass_NoClubPoints_NoDivision_LapTimeLessThan1Minute_Unofficial_Practice
             .load()
@@ -23,7 +24,7 @@ class DJiRDataCSVEventResultTests: XCTestCase {
     }
 
     func test_Oval_NoTeam_SingleClass_NoClubPoints_NoDivision_LapTimeLessThan1Minute_Unofficial_Qualify() {
-        let data = Resources
+        let data = DJiRDataTestResources
             .CSVEventResult
             .Oval_NoTeam_SingleClass_NoClubPoints_NoDivision_LapTimeLessThan1Minute_Unofficial_Qualify
             .load()
@@ -39,7 +40,7 @@ class DJiRDataCSVEventResultTests: XCTestCase {
     }
 
     func test_Oval_NoTeam_SingleClass_NoClubPoints_NoDivision_LapTimeLessThan1Minute_Unofficial_Race() {
-        let data = Resources
+        let data = DJiRDataTestResources
             .CSVEventResult
             .Oval_NoTeam_SingleClass_NoClubPoints_NoDivision_LapTimeLessThan1Minute_Unofficial_Race
             .load()
@@ -55,7 +56,7 @@ class DJiRDataCSVEventResultTests: XCTestCase {
     }
 
     func test_Road_NoTeam_MultiClass_Practice() {
-        let data = Resources
+        let data = DJiRDataTestResources
             .CSVEventResult
             .Road_NoTeam_MultiClass_Practice
             .load()
@@ -68,7 +69,7 @@ class DJiRDataCSVEventResultTests: XCTestCase {
     }
 
     func test_Road_NoTeam_MultiClass_Qualify() {
-        let data = Resources
+        let data = DJiRDataTestResources
             .CSVEventResult
             .Road_NoTeam_MultiClass_Qualify
             .load()
@@ -81,7 +82,7 @@ class DJiRDataCSVEventResultTests: XCTestCase {
     }
 
     func test_Road_NoTeam_MultiClass_Race() {
-        let data = Resources
+        let data = DJiRDataTestResources
             .CSVEventResult
             .Road_NoTeam_MultiClass_Race
             .load()
@@ -94,7 +95,7 @@ class DJiRDataCSVEventResultTests: XCTestCase {
     }
 
     func test_Road_NoTeam_SingleClass_Practice() {
-        let data = Resources
+        let data = DJiRDataTestResources
             .CSVEventResult
             .Road_NoTeam_SingleClass_Practice
             .load()
@@ -107,7 +108,7 @@ class DJiRDataCSVEventResultTests: XCTestCase {
     }
 
     func test_Road_NoTeam_SingleClass_Qualify() {
-        let data = Resources
+        let data = DJiRDataTestResources
             .CSVEventResult
             .Road_NoTeam_SingleClass_Qualify
             .load()
@@ -120,7 +121,7 @@ class DJiRDataCSVEventResultTests: XCTestCase {
     }
 
     func test_Road_NoTeam_SingleClass_Race() {
-        let data = Resources
+        let data = DJiRDataTestResources
             .CSVEventResult
             .Road_NoTeam_SingleClass_Race
             .load()
@@ -133,7 +134,7 @@ class DJiRDataCSVEventResultTests: XCTestCase {
     }
 
     func test_Road_Team_MultiClass_Practice() {
-        let data = Resources
+        let data = DJiRDataTestResources
             .CSVEventResult
             .Road_Team_MultiClass_Practice
             .load()
@@ -146,7 +147,7 @@ class DJiRDataCSVEventResultTests: XCTestCase {
     }
 
     func test_Road_Team_MultiClass_Qualify() {
-        let data = Resources
+        let data = DJiRDataTestResources
             .CSVEventResult
             .Road_Team_MultiClass_Qualify
             .load()
@@ -159,7 +160,7 @@ class DJiRDataCSVEventResultTests: XCTestCase {
     }
 
     func test_Road_Team_MultiClass_Race() {
-        let data = Resources
+        let data = DJiRDataTestResources
             .CSVEventResult
             .Road_Team_MultiClass_Race
             .load()
@@ -172,7 +173,7 @@ class DJiRDataCSVEventResultTests: XCTestCase {
     }
 
     func test_Road_Team_SingleClass_NoClubPoints_NoDivision_Practice() {
-        let data = Resources
+        let data = DJiRDataTestResources
             .CSVEventResult
             .Road_Team_SingleClass_NoClubPoints_NoDivision_Practice
             .load()
@@ -185,7 +186,7 @@ class DJiRDataCSVEventResultTests: XCTestCase {
     }
 
     func test_Road_Team_SingleClass_NoClubPoints_NoDivision_Qualify() {
-        let data = Resources
+        let data = DJiRDataTestResources
             .CSVEventResult
             .Road_Team_SingleClass_NoClubPoints_NoDivision_Qualify
             .load()
@@ -198,7 +199,7 @@ class DJiRDataCSVEventResultTests: XCTestCase {
     }
 
     func test_Road_Team_SingleClass_NoClubPoints_NoDivision_Race() {
-        let data = Resources
+        let data = DJiRDataTestResources
             .CSVEventResult
             .Road_Team_SingleClass_NoClubPoints_NoDivision_Race
             .load()
@@ -231,7 +232,7 @@ class DJiRDataCSVEventResultTests: XCTestCase {
     }
     
     func testInvalidSummaryData() {
-        let data = Resources.CSVEventResult.InvalidSummary.load()
+        let data = DJiRDataTestResources.CSVEventResult.InvalidSummary.load()
         
         XCTAssertThrowsError(try DJiRData().createCSVEventResultFromData(data)) { error in
             guard case DJiRData.Error.failedToDecodeSummary = error else {
@@ -241,7 +242,7 @@ class DJiRDataCSVEventResultTests: XCTestCase {
     }
     
     func testInvalidResultData() {
-        let data = Resources.CSVEventResult.InvalidResults.load()
+        let data = DJiRDataTestResources.CSVEventResult.InvalidResults.load()
         
         XCTAssertThrowsError(try DJiRData().createCSVEventResultFromData(data)) { error in
             guard case DJiRData.Error.failedToDecodeResults = error else {

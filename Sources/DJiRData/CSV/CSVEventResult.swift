@@ -1,6 +1,4 @@
-import Foundation
-
-/*
+/**
  Represents an event-result as exported from the website
  
  ## Format
@@ -77,9 +75,9 @@ public struct CSVEventResult {
         public let out: String
         public let interval: String
         public let lapsLed: Int
-        public let qualifyTime: String
-        public let averageLapTime: String
-        public let fastestLapTime: String
+        public let qualifyTime: String?
+        public let averageLapTime: String?
+        public let fastestLapTime: String?
         public let fastestLapNo: Int?
         public let lapsCompleted: Int
         public let inc: Int
