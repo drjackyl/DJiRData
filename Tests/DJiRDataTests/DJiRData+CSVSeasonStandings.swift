@@ -5,8 +5,6 @@ import Foundation
 
 class DJiRDataCSVSeasonStandingsTests: XCTestCase {
     
-    // MARK: - Regular Data
-    
     func test_StandingsOfAWeek() {
         let data = DJiRDataTestResources
             .CSVSeasonStandings
@@ -36,6 +34,20 @@ class DJiRDataCSVSeasonStandingsTests: XCTestCase {
             XCTAssertTrue(csvSeasonStandings.contains { $0.name == "Felix Lieb" })
         } catch let error {
             XCTFail("An error was thrown: \(error)")
+        }
+    }
+    
+    func test_EmptyData() {
+        let data = Data()
+        
+        do {
+            _ = try DJiRData().createCSVSeasonStandingsFromData(data)
+        } catch let error as DJiRData.Error {
+            guard case .failedToDecodeData = error else {
+                XCTFail("The wrong error was thrown: \(error)"); return
+            }
+        } catch let error {
+            XCTFail("An unexpected error was thrown: \(error)")
         }
     }
     
