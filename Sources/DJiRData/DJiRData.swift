@@ -4,7 +4,6 @@ import DJEncoding
 public class DJiRData {
     
     public init() {
-        csvDecoder = CSVDecoder()
         csvDecoder.configuration
             .stringEncoding(.ascii)
     }
@@ -29,6 +28,14 @@ public class DJiRData {
         }
     }
     
+    public func createJSONGenericFromData(_ data: Data) throws -> JSONGenericModel {
+        do {
+            return try jsonDecoder.decode(JSONGenericModel.self, from: data)
+        } catch let error {
+            throw Error.failedToDecodeData(underlyingError: error)
+        }
+    }
+    
     public enum Error: Swift.Error {
         case failedToDivideSummaryAndResults
         case failedToDecodeSummary(underlyingError: Swift.Error)
@@ -42,8 +49,9 @@ public class DJiRData {
     
     // MARK: - Private
     
-    private let csvDecoder: CSVDecoder
+    private let csvDecoder: CSVDecoder = .init()
     private let doubleNewline = "\n\n".data(using: .ascii)!
+    private let jsonDecoder: JSONDecoder = .init()
     
     private func getRangeBetweenSummaryAndResults(_ data: Data) throws -> Range<Data.Index> {
         guard let doubleNewlineRange = data.range(of: doubleNewline) else {

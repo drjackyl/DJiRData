@@ -4,9 +4,9 @@
  - Parameter m: Represents the model defined as key to field-name.
  - Parameter d: Represents the data defined as key to value. The value can be `String` or `Int`, I did not, yet see other types.
  */
-struct JSONGenericModel: Codable {
-    let m: [String: String]
-    let d: [[String: Value]]
+public struct JSONGenericModel: Codable {
+    public let m: [String: String]
+    public let d: [[String: Value]]
     
     /**
      A wrapper for values of types `String`, `Int` or `Double`
@@ -16,8 +16,8 @@ struct JSONGenericModel: Codable {
      decode a floating-point number as `Double`. If that failed as well, an error is thrown, since those three are
      currently supported types. Boolean values seem to be encoded as Ints 0/1 and I did not yet spot floating-points.
      */
-    struct Value: Codable {
-        init(from decoder: Decoder) throws {
+    public struct Value: Codable {
+        public init(from decoder: Decoder) throws {
             let singleValueContainer = try decoder.singleValueContainer()
             if let stringValue = try? singleValueContainer.decode(String.self) {
                 self.stringValue = stringValue
@@ -36,12 +36,12 @@ struct JSONGenericModel: Codable {
             }
         }
         
-        let stringValue: String
-        let intValue: Int?
-        let doubelValue: Double?
+        public let stringValue: String
+        public let intValue: Int?
+        public let doubelValue: Double?
     }
     
-    enum Error: Swift.Error {
+    public enum Error: Swift.Error {
         case decodingValueFailed
     }
 }
