@@ -4,7 +4,10 @@ DrJackyl's Swift Package for iRacing-Data provides models and logic to decode da
 
 ## Supported Data
 
+* Series race results.
 * Event Result in CSV-format.
+* Season standings in CSV-format.
+* Data represented in a generic JSON-model.
 
 ## Examples
 

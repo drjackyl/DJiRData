@@ -22,23 +22,29 @@ public struct JSONGenericModel: Codable {
             if let stringValue = try? singleValueContainer.decode(String.self) {
                 self.stringValue = stringValue
                 self.intValue = nil
-                self.doubelValue = nil
+                self.doubleValue = nil
             } else if let intValue = try? singleValueContainer.decode(Int.self) {
                 self.stringValue = "\(intValue)"
                 self.intValue = intValue
-                self.doubelValue = nil
+                self.doubleValue = nil
             } else if let doubleValue = try? singleValueContainer.decode(Double.self) {
                 self.stringValue = String(format: "%f", doubleValue)
                 self.intValue = nil
-                self.doubelValue = nil
+                self.doubleValue = nil
             } else {
                 throw Error.decodingValueFailed
             }
         }
         
+        init(stringValue: String, intValue: Int? = nil, doubleValue: Double? = nil) {
+            self.stringValue = stringValue
+            self.intValue = intValue
+            self.doubleValue = doubleValue
+        }
+        
         public let stringValue: String
         public let intValue: Int?
-        public let doubelValue: Double?
+        public let doubleValue: Double?
     }
     
     public enum Error: Swift.Error {
