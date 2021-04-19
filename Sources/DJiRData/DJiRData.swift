@@ -28,6 +28,15 @@ public class DJiRData {
         }
     }
     
+    public func createSeriesRaceResultsFromData(_ data: Data) throws -> SeriesRaceResults {
+        do {
+            let results = try jsonGenericDecoder.decode([SeriesRaceResults.SessionInfo].self, from: data)
+            return SeriesRaceResults(sessions: results)
+        } catch let error {
+            throw Error.failedToDecodeData(underlyingError: error)
+        }
+    }
+    
     public func createJSONGenericFromData(_ data: Data) throws -> JSONGenericModel {
         do {
             return try jsonDecoder.decode(JSONGenericModel.self, from: data)
@@ -51,6 +60,7 @@ public class DJiRData {
     
     private let csvDecoder: CSVDecoder = .init()
     private let doubleNewline = "\n\n".data(using: .ascii)!
+    private let jsonGenericDecoder: JSONGenericDecoder = .init()
     private let jsonDecoder: JSONDecoder = .init()
     
     private func getRangeBetweenSummaryAndResults(_ data: Data) throws -> Range<Data.Index> {
