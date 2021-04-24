@@ -11,7 +11,7 @@ class DJiRDataCSVSeasonStandingsTests: XCTestCase {
             .SeasonStandings_Week
             .load()
         
-        let csvSeasonStandings = try DJiRData().createCSVSeasonStandingsFromData(data)
+        let csvSeasonStandings = try DJiRDataAPI().createCSVSeasonStandingsFromData(data)
         XCTAssertEqual(csvSeasonStandings.count, 680)
         XCTAssertEqual(csvSeasonStandings.filter { $0.clubname == "DE-AT-CH" }.count, 101)
         XCTAssertTrue(csvSeasonStandings.contains { $0.name == "Felix Lieb" })
@@ -22,7 +22,7 @@ class DJiRDataCSVSeasonStandingsTests: XCTestCase {
             .CSVSeasonStandings
             .SeasonStandings_Season
             .load()
-        let csvSeasonStandings = try DJiRData().createCSVSeasonStandingsFromData(data)
+        let csvSeasonStandings = try DJiRDataAPI().createCSVSeasonStandingsFromData(data)
         XCTAssertEqual(csvSeasonStandings.count, 2461)
         XCTAssertEqual(csvSeasonStandings.filter { $0.clubname == "DE-AT-CH" }.count, 322)
         XCTAssertTrue(csvSeasonStandings.contains { $0.name == "Felix Lieb" })
@@ -32,8 +32,8 @@ class DJiRDataCSVSeasonStandingsTests: XCTestCase {
         let data = Data()
         
         do {
-            _ = try DJiRData().createCSVSeasonStandingsFromData(data)
-        } catch let error as DJiRData.Error {
+            _ = try DJiRDataAPI().createCSVSeasonStandingsFromData(data)
+        } catch let error as DJiRDataAPI.Error {
             guard case .failedToDecodeData = error else {
                 XCTFail("The wrong error was thrown: \(error)"); return
             }

@@ -14,7 +14,7 @@ class DJiRDataCSVEventResultTests: XCTestCase {
             .load()
         
         do {
-            let csvEventResult = try DJiRData().createCSVEventResultFromData(data)
+            let csvEventResult = try DJiRDataAPI().createCSVEventResultFromData(data)
             XCTAssertEqual(csvEventResult.summary.track, "IRacing Superspeedway")
             XCTAssertEqual(csvEventResult.results.count, 22)
             XCTAssertEqual(csvEventResult.results[13].name, "Jason Nooyen")
@@ -30,7 +30,7 @@ class DJiRDataCSVEventResultTests: XCTestCase {
             .load()
         
         do {
-            let csvEventResult = try DJiRData().createCSVEventResultFromData(data)
+            let csvEventResult = try DJiRDataAPI().createCSVEventResultFromData(data)
             XCTAssertEqual(csvEventResult.summary.series, "Carburetor Cup")
             XCTAssertEqual(csvEventResult.results.count, 22)
             XCTAssertEqual(csvEventResult.results[0].name, "Rusty Galon")
@@ -46,7 +46,7 @@ class DJiRDataCSVEventResultTests: XCTestCase {
             .load()
         
         do {
-            let csvEventResult = try DJiRData().createCSVEventResultFromData(data)
+            let csvEventResult = try DJiRDataAPI().createCSVEventResultFromData(data)
             XCTAssertEqual(csvEventResult.summary.seasonYear, 2021)
             XCTAssertEqual(csvEventResult.results.count, 22)
             XCTAssertEqual(csvEventResult.results[21].name, "Sam Hinds")
@@ -62,7 +62,7 @@ class DJiRDataCSVEventResultTests: XCTestCase {
             .load()
         
         do {
-            _ = try DJiRData().createCSVEventResultFromData(data)
+            _ = try DJiRDataAPI().createCSVEventResultFromData(data)
         } catch let error {
             XCTFail("An error was thrown: \(error)")
         }
@@ -75,7 +75,7 @@ class DJiRDataCSVEventResultTests: XCTestCase {
             .load()
         
         do {
-            _ = try DJiRData().createCSVEventResultFromData(data)
+            _ = try DJiRDataAPI().createCSVEventResultFromData(data)
         } catch let error {
             XCTFail("An error was thrown: \(error)")
         }
@@ -88,7 +88,7 @@ class DJiRDataCSVEventResultTests: XCTestCase {
             .load()
         
         do {
-            _ = try DJiRData().createCSVEventResultFromData(data)
+            _ = try DJiRDataAPI().createCSVEventResultFromData(data)
         } catch let error {
             XCTFail("An error was thrown: \(error)")
         }
@@ -101,7 +101,7 @@ class DJiRDataCSVEventResultTests: XCTestCase {
             .load()
         
         do {
-            _ = try DJiRData().createCSVEventResultFromData(data)
+            _ = try DJiRDataAPI().createCSVEventResultFromData(data)
         } catch let error {
             XCTFail("An error was thrown: \(error)")
         }
@@ -114,7 +114,7 @@ class DJiRDataCSVEventResultTests: XCTestCase {
             .load()
         
         do {
-            _ = try DJiRData().createCSVEventResultFromData(data)
+            _ = try DJiRDataAPI().createCSVEventResultFromData(data)
         } catch let error {
             XCTFail("An error was thrown: \(error)")
         }
@@ -127,7 +127,7 @@ class DJiRDataCSVEventResultTests: XCTestCase {
             .load()
         
         do {
-            _ = try DJiRData().createCSVEventResultFromData(data)
+            _ = try DJiRDataAPI().createCSVEventResultFromData(data)
         } catch let error {
             XCTFail("An error was thrown: \(error)")
         }
@@ -140,7 +140,7 @@ class DJiRDataCSVEventResultTests: XCTestCase {
             .load()
         
         do {
-            _ = try DJiRData().createCSVEventResultFromData(data)
+            _ = try DJiRDataAPI().createCSVEventResultFromData(data)
         } catch let error {
             XCTFail("An error was thrown: \(error)")
         }
@@ -153,7 +153,7 @@ class DJiRDataCSVEventResultTests: XCTestCase {
             .load()
         
         do {
-            _ = try DJiRData().createCSVEventResultFromData(data)
+            _ = try DJiRDataAPI().createCSVEventResultFromData(data)
         } catch let error {
             XCTFail("An error was thrown: \(error)")
         }
@@ -166,7 +166,7 @@ class DJiRDataCSVEventResultTests: XCTestCase {
             .load()
         
         do {
-            _ = try DJiRData().createCSVEventResultFromData(data)
+            _ = try DJiRDataAPI().createCSVEventResultFromData(data)
         } catch let error {
             XCTFail("An error was thrown: \(error)")
         }
@@ -179,7 +179,7 @@ class DJiRDataCSVEventResultTests: XCTestCase {
             .load()
         
         do {
-            _ = try DJiRData().createCSVEventResultFromData(data)
+            _ = try DJiRDataAPI().createCSVEventResultFromData(data)
         } catch let error {
             XCTFail("An error was thrown: \(error)")
         }
@@ -192,7 +192,7 @@ class DJiRDataCSVEventResultTests: XCTestCase {
             .load()
         
         do {
-            _ = try DJiRData().createCSVEventResultFromData(data)
+            _ = try DJiRDataAPI().createCSVEventResultFromData(data)
         } catch let error {
             XCTFail("An error was thrown: \(error)")
         }
@@ -205,7 +205,7 @@ class DJiRDataCSVEventResultTests: XCTestCase {
             .load()
         
         do {
-            _ = try DJiRData().createCSVEventResultFromData(data)
+            _ = try DJiRDataAPI().createCSVEventResultFromData(data)
         } catch let error {
             XCTFail("An error was thrown: \(error)")
         }
@@ -214,8 +214,8 @@ class DJiRDataCSVEventResultTests: XCTestCase {
     // MARK: - Erronous Data
     
     func testEmptyData() {
-        XCTAssertThrowsError(try DJiRData().createCSVEventResultFromData(Data())) { error in
-            guard case DJiRData.Error.failedToDivideSummaryAndResults = error else {
+        XCTAssertThrowsError(try DJiRDataAPI().createCSVEventResultFromData(Data())) { error in
+            guard case DJiRDataAPI.Error.failedToDivideSummaryAndResults = error else {
                 XCTFail("Unexpected error was thrown: \(error)"); return
             }
         }
@@ -224,8 +224,8 @@ class DJiRDataCSVEventResultTests: XCTestCase {
     func testDividerOnly() {
         let data = "\n\n".data(using: .ascii)!
         
-        XCTAssertThrowsError(try DJiRData().createCSVEventResultFromData(data)) { error in
-            guard case DJiRData.Error.failedToDecodeSummary = error else {
+        XCTAssertThrowsError(try DJiRDataAPI().createCSVEventResultFromData(data)) { error in
+            guard case DJiRDataAPI.Error.failedToDecodeSummary = error else {
                 XCTFail("Unexpected error was thrown: \(error)"); return
             }
         }
@@ -234,8 +234,8 @@ class DJiRDataCSVEventResultTests: XCTestCase {
     func testInvalidSummaryData() {
         let data = DJiRDataTestResources.CSVEventResult.InvalidSummary.load()
         
-        XCTAssertThrowsError(try DJiRData().createCSVEventResultFromData(data)) { error in
-            guard case DJiRData.Error.failedToDecodeSummary = error else {
+        XCTAssertThrowsError(try DJiRDataAPI().createCSVEventResultFromData(data)) { error in
+            guard case DJiRDataAPI.Error.failedToDecodeSummary = error else {
                 XCTFail("Unexpected error was thrown: \(error)"); return
             }
         }
@@ -244,8 +244,8 @@ class DJiRDataCSVEventResultTests: XCTestCase {
     func testInvalidResultData() {
         let data = DJiRDataTestResources.CSVEventResult.InvalidResults.load()
         
-        XCTAssertThrowsError(try DJiRData().createCSVEventResultFromData(data)) { error in
-            guard case DJiRData.Error.failedToDecodeResults = error else {
+        XCTAssertThrowsError(try DJiRDataAPI().createCSVEventResultFromData(data)) { error in
+            guard case DJiRDataAPI.Error.failedToDecodeResults = error else {
                 XCTFail("Unexpected error was thrown: \(error)"); return
             }
         }
