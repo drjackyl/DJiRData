@@ -1,7 +1,7 @@
 import Foundation
 import DJEncoding
 
-public class DJiRData {
+public class DJiRDataAPI {
     
     public init() {
         csvDecoder.configuration
