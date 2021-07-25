@@ -5,7 +5,7 @@ import DJiRDataTestResources
 class JSONGenericModelTests: XCTestCase {
     
     func testSeriesRaceResults() throws {
-        let data = DJiRDataTestResources
+        let data = IRDataTestResources
             .JSONGenericModel
             .SeriesRaceResults_IMSA2021s2w1
             .load()
