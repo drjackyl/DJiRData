@@ -1,7 +1,7 @@
 import Foundation
 import DJEncoding
 
-public class DJiRDataAPI {
+public class IRData {
     
     public init() {
         csvDecoder.configuration
@@ -32,6 +32,23 @@ public class DJiRDataAPI {
         do {
             let results = try jsonGenericDecoder.decode([SeriesRaceResults.SessionInfo].self, from: data)
             return SeriesRaceResults(sessions: results)
+        } catch let error {
+            throw Error.failedToDecodeData(underlyingError: error)
+        }
+    }
+    
+    public func createSpectatorSessionsFromData(_ data: Data) throws -> SpectatorSessions {
+        do {
+            let sessions = try jsonDecoder.decode([SpectatorSessions.SpectatorSession].self, from: data)
+            return SpectatorSessions(sessions: sessions)
+        } catch let error {
+            throw Error.failedToDecodeData(underlyingError: error)
+        }
+    }
+    
+    public func createSessionDriversFromData(_ data: Data) throws -> SessionDrivers {
+        do {
+            return try jsonDecoder.decode(SessionDrivers.self, from: data)
         } catch let error {
             throw Error.failedToDecodeData(underlyingError: error)
         }
