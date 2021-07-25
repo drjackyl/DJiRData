@@ -37,6 +37,15 @@ public class DJiRDataAPI {
         }
     }
     
+    public func createSpectatorSessionsFromData(_ data: Data) throws -> SpectatorSessions {
+        do {
+            let sessions = try jsonDecoder.decode([SpectatorSessions.SpectatorSession].self, from: data)
+            return SpectatorSessions(sessions: sessions)
+        } catch let error {
+            throw Error.failedToDecodeData(underlyingError: error)
+        }
+    }
+    
     public func createJSONGenericFromData(_ data: Data) throws -> JSONGenericModel {
         do {
             return try jsonDecoder.decode(JSONGenericModel.self, from: data)
