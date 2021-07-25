@@ -46,6 +46,14 @@ public class IRData {
         }
     }
     
+    public func createSessionDriversFromData(_ data: Data) throws -> SessionDrivers {
+        do {
+            return try jsonDecoder.decode(SessionDrivers.self, from: data)
+        } catch let error {
+            throw Error.failedToDecodeData(underlyingError: error)
+        }
+    }
+    
     public func createJSONGenericFromData(_ data: Data) throws -> JSONGenericModel {
         do {
             return try jsonDecoder.decode(JSONGenericModel.self, from: data)
