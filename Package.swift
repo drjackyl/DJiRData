@@ -25,9 +25,6 @@ let package = Package(
             dependencies: ["DJEncoding"]),
         .testTarget(
             name: "DJiRDataTests",
-            dependencies: ["DJiRData", "DJEncoding", "DJiRDataTestResources"],
-            resources: [
-                .process("Resources")
-            ]),
+            dependencies: ["DJiRData", "DJEncoding", "DJiRDataTestResources"]),
     ]
 )

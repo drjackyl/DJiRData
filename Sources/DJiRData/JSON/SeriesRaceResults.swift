@@ -1,4 +1,4 @@
-/*
+/**
  Represents information about sessions as retrieved from the backend
  
  ## Not really results
