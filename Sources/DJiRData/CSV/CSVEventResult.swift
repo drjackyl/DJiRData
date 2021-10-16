@@ -36,6 +36,14 @@ public struct CSVEventResult {
     public let summary: Summary
     public let results: [Result]
     
+    public init(
+        summary: Summary,
+        results: [Result]
+    ) {
+        self.summary = summary
+        self.results = results
+    }
+    
     public struct Summary: Codable {
         public let startTime: String
         public let track: String
@@ -46,6 +54,28 @@ public struct CSVEventResult {
         public let raceWeek: Int
         public let strengthOfField: Int
         public let specialEventType: String?
+        
+        public init(
+            startTime: String,
+            track: String,
+            series: String,
+            seasonYear: Int,
+            seasonQuarter: Int,
+            rookieSeason: String,
+            raceWeek: Int,
+            strengthOfField: Int,
+            specialEventType: String? = nil
+        ) {
+            self.startTime = startTime
+            self.track = track
+            self.series = series
+            self.seasonYear = seasonYear
+            self.seasonQuarter = seasonQuarter
+            self.rookieSeason = rookieSeason
+            self.raceWeek = raceWeek
+            self.strengthOfField = strengthOfField
+            self.specialEventType = specialEventType
+        }
 
         enum CodingKeys: String, CodingKey {
             case startTime = "Start Time"
@@ -96,6 +126,80 @@ public struct CSVEventResult {
         public let maxFuelFillPercentage: Int
         public let weightPenaltyInKg: Int
         public let aggPts: Int
+        
+        public init(
+            finPos: Int,
+            carID: Int,
+            car: String,
+            carClassID: Int,
+            carClass: String,
+            teamID: Int,
+            customerID: Int,
+            name: String,
+            startPos: Int,
+            carNo: Int,
+            outID: Int,
+            out: String,
+            interval: String,
+            lapsLed: Int,
+            qualifyTime: String? = nil,
+            averageLapTime: String? = nil,
+            fastestLapTime: String? = nil,
+            fastestLapNo: Int? = nil,
+            lapsCompleted: Int,
+            inc: Int,
+            pts: Int,
+            clubPts: Int,
+            div: Int,
+            clubID: Int? = nil,
+            club: String,
+            oldiRating: Int? = nil,
+            newiRating: Int? = nil,
+            oldLicenseLevel: Int? = nil,
+            oldLicenseSubLevel: Int? = nil,
+            newLicenseLevel: Int? = nil,
+            newLicenseSubLevel: Int? = nil,
+            seriesName: String,
+            maxFuelFillPercentage: Int,
+            weightPenaltyInKg: Int,
+            aggPts: Int
+        ) {
+            self.finPos = finPos
+            self.carID = carID
+            self.car = car
+            self.carClassID = carClassID
+            self.carClass = carClass
+            self.teamID = teamID
+            self.customerID = customerID
+            self.name = name
+            self.startPos = startPos
+            self.carNo = carNo
+            self.outID = outID
+            self.out = out
+            self.interval = interval
+            self.lapsLed = lapsLed
+            self.qualifyTime = qualifyTime
+            self.averageLapTime = averageLapTime
+            self.fastestLapTime = fastestLapTime
+            self.fastestLapNo = fastestLapNo
+            self.lapsCompleted = lapsCompleted
+            self.inc = inc
+            self.pts = pts
+            self.clubPts = clubPts
+            self.div = div
+            self.clubID = clubID
+            self.club = club
+            self.oldiRating = oldiRating
+            self.newiRating = newiRating
+            self.oldLicenseLevel = oldLicenseLevel
+            self.oldLicenseSubLevel = oldLicenseSubLevel
+            self.newLicenseLevel = newLicenseLevel
+            self.newLicenseSubLevel = newLicenseSubLevel
+            self.seriesName = seriesName
+            self.maxFuelFillPercentage = maxFuelFillPercentage
+            self.weightPenaltyInKg = weightPenaltyInKg
+            self.aggPts = aggPts
+        }
         
         enum CodingKeys: String, CodingKey {
             case finPos =  "Fin Pos"

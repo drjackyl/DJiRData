@@ -14,6 +14,12 @@
 public struct SpectatorSessions {
     public let sessions: [SpectatorSession]
     
+    public init(
+        sessions: [SpectatorSession]
+    ) {
+        self.sessions = sessions
+    }
+    
     public struct SpectatorSession: Codable {
         public let broadcast: Broadcast
         
@@ -67,6 +73,48 @@ public struct SpectatorSessions {
         public let subSessionID: Int
         public let driverChanges: Int
         
+        public init(
+            broadcast: Broadcast,
+            trackID: Int,
+            privateSessionID: String,
+            minTeamDrivers: Int,
+            raceWeek: Int,
+            sessionID: Int,
+            subSessionStatus: String,
+            seriesID: Int,
+            maxTeamDrivers: Int,
+            qualifierMustStartRace: Int,
+            startTime: Int,
+            categoryID: Int,
+            sessionStatus: String,
+            driverChangeRule: Int,
+            seasonID: Int,
+            raceStatus: String,
+            eventType: Int,
+            subSessionID: Int,
+            driverChanges: Int
+        ) {
+            self.broadcast = broadcast
+            self.trackID = trackID
+            self.privateSessionID = privateSessionID
+            self.minTeamDrivers = minTeamDrivers
+            self.raceWeek = raceWeek
+            self.sessionID = sessionID
+            self.subSessionStatus = subSessionStatus
+            self.seriesID = seriesID
+            self.maxTeamDrivers = maxTeamDrivers
+            self.qualifierMustStartRace = qualifierMustStartRace
+            self.startTime = startTime
+            self.categoryID = categoryID
+            self.sessionStatus = sessionStatus
+            self.driverChangeRule = driverChangeRule
+            self.seasonID = seasonID
+            self.raceStatus = raceStatus
+            self.eventType = eventType
+            self.subSessionID = subSessionID
+            self.driverChanges = driverChanges
+        }
+        
         enum CodingKeys: String, CodingKey {
             case broadcast = "broadcast"
             case trackID = "trackid"
@@ -102,6 +150,34 @@ public struct SpectatorSessions {
             public let isBroadcaster: Bool
             public let canBroadcast: Bool
             public let subSessionID: Int
+            
+            public init(
+                maxUsers: Int,
+                numberOfDrivers: Int,
+                canWatch: Bool,
+                numberOfBroadcasters: Int,
+                availableSpectatorSlots: Int,
+                numberOfSpectators: Int,
+                availableReservedBroadcasterSlots: Int,
+                canSpot: Bool,
+                numberOfSpectatorSlots: Int,
+                isBroadcaster: Bool,
+                canBroadcast: Bool,
+                subSessionID: Int
+            ) {
+                self.maxUsers = maxUsers
+                self.numberOfDrivers = numberOfDrivers
+                self.canWatch = canWatch
+                self.numberOfBroadcasters = numberOfBroadcasters
+                self.availableSpectatorSlots = availableSpectatorSlots
+                self.numberOfSpectators = numberOfSpectators
+                self.availableReservedBroadcasterSlots = availableReservedBroadcasterSlots
+                self.canSpot = canSpot
+                self.numberOfSpectatorSlots = numberOfSpectatorSlots
+                self.isBroadcaster = isBroadcaster
+                self.canBroadcast = canBroadcast
+                self.subSessionID = subSessionID
+            }
             
             enum CodingKeys: String, CodingKey {
                 case maxUsers = "maxUsers"

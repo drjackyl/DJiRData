@@ -8,6 +8,14 @@ public struct JSONGenericModel: Codable {
     public let m: [String: String]
     public let d: [[String: Value]]
     
+    public init(
+        m: [String: String],
+        d: [[String: Value]]
+    ) {
+        self.m = m
+        self.d = d
+    }
+    
     /**
      A wrapper for values of types `String`, `Int` or `Double`
      
@@ -17,6 +25,16 @@ public struct JSONGenericModel: Codable {
      currently supported types. Boolean values seem to be encoded as Ints 0/1 and I did not yet spot floating-points.
      */
     public struct Value: Codable {
+        public let stringValue: String
+        public let intValue: Int?
+        public let doubleValue: Double?
+        
+        public init(stringValue: String, intValue: Int? = nil, doubleValue: Double? = nil) {
+            self.stringValue = stringValue
+            self.intValue = intValue
+            self.doubleValue = doubleValue
+        }
+        
         public init(from decoder: Decoder) throws {
             let singleValueContainer = try decoder.singleValueContainer()
             if let stringValue = try? singleValueContainer.decode(String.self) {
@@ -35,16 +53,6 @@ public struct JSONGenericModel: Codable {
                 throw Error.decodingValueFailed
             }
         }
-        
-        init(stringValue: String, intValue: Int? = nil, doubleValue: Double? = nil) {
-            self.stringValue = stringValue
-            self.intValue = intValue
-            self.doubleValue = doubleValue
-        }
-        
-        public let stringValue: String
-        public let intValue: Int?
-        public let doubleValue: Double?
     }
     
     public enum Error: Swift.Error {
