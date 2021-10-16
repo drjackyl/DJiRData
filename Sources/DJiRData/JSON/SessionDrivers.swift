@@ -17,6 +17,16 @@ public struct SessionDrivers: Codable {
     public let requestIndex: Int
     public let drivers: [Driver]
     
+    public init(
+        subSessionID: Int,
+        requestIndex: Int,
+        drivers: [Driver]
+    ) {
+        self.subSessionID = subSessionID
+        self.requestIndex = requestIndex
+        self.drivers = drivers
+    }
+    
     enum CodingKeys: String, CodingKey {
         case subSessionID = "subsessionid"
         case requestIndex = "requestindex"
@@ -51,6 +61,28 @@ public struct SessionDrivers: Codable {
         
         public let carID: Int
         public let customerID: Int
+        
+        public init(
+            di: Int,
+            driverName: String,
+            p: Int,
+            color1: String,
+            color2: String,
+            color3: String,
+            ll: Int,
+            carID: Int,
+            customerID: Int
+        ) {
+            self.di = di
+            self.driverName = driverName
+            self.p = p
+            self.color1 = color1
+            self.color2 = color2
+            self.color3 = color3
+            self.ll = ll
+            self.carID = carID
+            self.customerID = customerID
+        }
         
         enum CodingKeys: String, CodingKey {
             case di = "di"

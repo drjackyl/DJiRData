@@ -24,6 +24,12 @@
 public struct SeriesRaceResults {
     public let sessions: [SessionInfo]
     
+    public init(
+        sessions: [SessionInfo]
+    ) {
+        self.sessions = sessions
+    }
+    
     public struct SessionInfo: Codable {
         public let startTime: Int
         public let carClassID: Int
@@ -33,6 +39,26 @@ public struct SeriesRaceResults {
         public let officialSession: Int
         public let sizeOfField: Int
         public let strengthOfField: Int
+        
+        public init(
+            startTime: Int,
+            carClassID: Int,
+            trackID: Int,
+            sessionID: Int,
+            subSessionID: Int,
+            officialSession: Int,
+            sizeOfField: Int,
+            strengthOfField: Int
+        ) {
+            self.startTime = startTime
+            self.carClassID = carClassID
+            self.trackID = trackID
+            self.sessionID = sessionID
+            self.subSessionID = subSessionID
+            self.officialSession = officialSession
+            self.sizeOfField = sizeOfField
+            self.strengthOfField = strengthOfField
+        }
         
         enum CodingKeys: String, CodingKey {
             case startTime = "1"

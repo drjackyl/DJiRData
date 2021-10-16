@@ -51,6 +51,50 @@ public struct CSVSeasonStandings: Codable {
     public let poles: Int
     public let avgstart: Int
     public let custid: Int
+    
+    public init(
+        position: Int,
+        name: String,
+        points: Int,
+        dropped: Int,
+        clubname: String,
+        countrycode: String,
+        irating: Int,
+        avgfinish: Int,
+        topfive: Int,
+        starts: Int,
+        lapslead: Int,
+        wins: Int,
+        incidents: Int,
+        division: Int,
+        week: Int?,
+        weekscounted: Int? = nil,
+        laps: Int,
+        poles: Int,
+        avgstart: Int,
+        custid: Int
+    ) {
+        self.position = position
+        self.name = name
+        self.points = points
+        self.dropped = dropped
+        self.clubname = clubname
+        self.countrycode = countrycode
+        self.irating = irating
+        self.avgfinish = avgfinish
+        self.topfive = topfive
+        self.starts = starts
+        self.lapslead = lapslead
+        self.wins = wins
+        self.incidents = incidents
+        self.division = division
+        self.week = week
+        self.weekscounted = weekscounted
+        self.laps = laps
+        self.poles = poles
+        self.avgstart = avgstart
+        self.custid = custid
+    }
 
     enum CodingKeys: String, CodingKey {
         case position = "position"
