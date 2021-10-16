@@ -25,7 +25,7 @@
  
  ## Backend
  
- The backend-endpoint for directly loading CSVs is https://members.iracing.com/membersite/member/GetEventResultsAsCSV
+ The backend-endpoint for directly loading CSVs using a GET-request is https://members.iracing.com/membersite/member/GetEventResultsAsCSV
  and has the parameters
  
  - `subsessionid`: The subsession-ID

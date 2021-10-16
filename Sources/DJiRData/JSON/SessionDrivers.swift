@@ -7,7 +7,7 @@
  
  ## Backend
  
- The backend-endpoint for directly loading the data is GET https://members.iracing.com/membersite/member/GetSessionDrivers
+ The backend-endpoint for directly loading the data using a GET-request is https://members.iracing.com/membersite/member/GetSessionDrivers
  
  - `subsessionid`: The sub-session-ID to retrieve the drivers for.
  - `requestindex`: Unknown.

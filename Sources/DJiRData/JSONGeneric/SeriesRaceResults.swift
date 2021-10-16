@@ -16,7 +16,8 @@
  
  ## Backend
  
- The backend-endpoint for directly loading the data is https://members.iracing.com/memberstats/member/GetSeriesRaceResults and has the parameters
+ The backend-endpoint for directly loading the data using a GET-request is https://members.iracing.com/memberstats/member/GetSeriesRaceResults
+ and has the parameters
  
  - `seasonid`: The season-ID reflecting the season of a series.
  - `raceweek`: The raceweek to return data for. Starts counting at 0 for raceweek 1.
