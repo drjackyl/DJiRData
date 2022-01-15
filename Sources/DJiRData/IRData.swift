@@ -8,6 +8,42 @@ public class IRData {
             .stringEncoding(.ascii)
     }
     
+    public func createAllSubsessionsFromData(_ data: Data) throws -> AllSubsessions {
+        do {
+            let allSubsessions = try jsonDecoder.decode([AllSubsessions.Subsession].self, from: data)
+            return AllSubsessions(subsessions: allSubsessions)
+        } catch let error {
+            throw Error.failedToDecodeData(underlyingError: error)
+        }
+    }
+    
+    public func createCareerStatsFromData(_ data: Data) throws -> CareerStats {
+        do {
+            let stats = try jsonDecoder.decode([CareerStats.Stats].self, from: data)
+            return CareerStats(stats: stats)
+        } catch let error {
+            throw Error.failedToDecodeData(underlyingError: error)
+        }
+    }
+    
+    public func createCarsDrivenFromData(_ data: Data) throws -> CarsDriven {
+        do {
+            let carIDs = try jsonDecoder.decode([Int].self, from: data)
+            return CarsDriven(carIDs: carIDs)
+        } catch let error {
+            throw Error.failedToDecodeData(underlyingError: error)
+        }
+    }
+    
+    public func createChartDataFromData(_ data: Data) throws -> ChartData {
+        do {
+            let dataPoints = try jsonDecoder.decode([[Int]].self, from: data)
+            return ChartData(dataPoints: dataPoints)
+        } catch let error {
+            throw Error.failedToDecodeData(underlyingError: error)
+        }
+    }
+    
     public func createCSVEventResultFromData(_ data: Data) throws -> CSVEventResult {
         let doubleNewlineRange = try getRangeBetweenSummaryAndResults(data)
         
@@ -23,6 +59,48 @@ public class IRData {
     public func createCSVSeasonStandingsFromData(_ data: Data) throws -> [CSVSeasonStandings] {
         do {
             return try csvDecoder.decode([CSVSeasonStandings].self, from: data)
+        } catch let error {
+            throw Error.failedToDecodeData(underlyingError: error)
+        }
+    }
+    
+    public func createDriverCountsFromData(_ data: Data) throws -> DriverCounts {
+        do {
+            return try jsonDecoder.decode(DriverCounts.self, from: data)
+        } catch let error {
+            throw Error.failedToDecodeData(underlyingError: error)
+        }
+    }
+    
+    public func createForumAnnouncementPostsFromData(_ data: Data) throws -> ForumAnnouncementPosts {
+        do {
+            let posts = try jsonDecoder.decode([ForumAnnouncementPosts.Post].self, from: data)
+            return ForumAnnouncementPosts(posts: posts)
+        } catch let error {
+            throw Error.failedToDecodeData(underlyingError: error)
+        }
+    }
+    
+    public func createLapChartFromData(_ data: Data) throws -> LapChart {
+        do {
+            return try jsonDecoder.decode(LapChart.self, from: data)
+        } catch let error {
+            throw Error.failedToDecodeData(underlyingError: error)
+        }
+    }
+    
+    public func createLapsFromData(_ data: Data) throws -> Laps {
+        do {
+            return try jsonDecoder.decode(Laps.self, from: data)
+        } catch let error {
+            throw Error.failedToDecodeData(underlyingError: error)
+        }
+    }
+    
+    public func createLastSeriesFromData(_ data: Data) throws -> LastSeries {
+        do {
+            let series = try jsonDecoder.decode([LastSeries.Series].self, from: data)
+            return LastSeries(series: series)
         } catch let error {
             throw Error.failedToDecodeData(underlyingError: error)
         }
