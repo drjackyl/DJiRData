@@ -1,3 +1,4 @@
+#if canImport(Foundation)
 import Foundation
 import DJEncoding
 
@@ -189,3 +190,4 @@ public class IRData {
     }
     
 }
+#endif
