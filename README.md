@@ -79,9 +79,9 @@ I'm picky on pull requests, mostly for the reason of consististency, please don'
 
 ### Unit Tests & Bugs
 
-Going onward, unit tests will be used to reflect surfaced problems and their resolution, for example missing properties due to different fields in the data based on differences in the query/request.
+Most of the unit tests have been removed, as they were using fetched real data, which exposed information about members, like real names and customer-IDs.
 
-In case you discover a bug, ie. a decoding error or missing data, it would be helpful to have the data that caused the problem. If you also had a unit-test showing the error, that would be awesome. 
+Remaining unit tests cover logic or document resolution of bugs in the models.
 
 ## Example
 
@@ -102,8 +102,15 @@ do {
 
 * All data listed in the table under "Supported Data".
 * JSON-data available on the website.
+* Usability of the package on other platforms than Apple, gating types, which require NSFoundation to be present.
 
 ## Breaking Changes
+
+### &lt; v0.3
+
+The test-resources (DJiRDataTestResources) for testing decoding of real data have been removed, because they exposed member-data, like real names and customer-IDs, wich are otherwise only visible to members.
+
+Hence, the respective unit-tests have been removed as well. I now set this up locally on my machine, where I run the tests.
 
 ### v0.1 to v0.2
 
