@@ -16,7 +16,7 @@
  
  ## Backend
  
- The backend-endpoint for directly loading CSVs is https://members.iracing.com/memberstats/member/GetSeasonStandings
+ The backend-endpoint for directly loading CSVs using a GET-request is https://members.iracing.com/memberstats/member/GetSeasonStandings
  and has the parameters
  
  - `format`: The format of the file, so far I tried 'csv' and 'json'.

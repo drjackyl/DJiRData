@@ -7,7 +7,7 @@
  
  ## Backend
  
- The backend-endpoint for directly loading the data is https://members.iracing.com/membersite/member/GetSpectatorSessions
+ The backend-endpoint for directly loading the data using a GET-request is https://members.iracing.com/membersite/member/GetSpectatorSessions
  
  - `type`:  The category of races to retrieve spectatable sessions for. Can be 'oval', 'road', 'dirt\_oval' or 'dirt\_road', 'hosted' or 'league'.
  */
