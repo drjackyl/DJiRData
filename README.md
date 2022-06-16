@@ -6,55 +6,56 @@ DrJackyl's Swift Package for iRacing-Data provides models and logic to decode da
 
 In the following table you can see all disocvered endpoints, their respective type in DJiRData (if it already exists), the format of the response-body as well as the URL, the endpoint has been discovered on. The latter does not mean, this is only URL to find the endpoint. It's just the one, I saw it at.
 
-| Endpoint                            | DJiRData-Type         | Fromat       | Discovered on |
-| ----------------------------------- | --------------------- | :----------: | ------------- |
-| GetAllSubsessions                   | -                     | JSON         | [EventResult.do](https://members.iracing.com/membersite/member/EventResult.do) |
-| GetCareerStats                      | -                     | JSON         | [CareerStats.do](https://members.iracing.com/membersite/member/CareerStats.do) |
-| GetCarsDriven                       | -                     | JSON         | [CareerStats.do](https://members.iracing.com/membersite/member/CareerStats.do) |
-| GetChartData                        | -                     | JSON         | [CareerStats.do](https://members.iracing.com/membersite/member/CareerStats.do) |
-| GetCustTeamSessions                 | -                     | ?            | [MyTeamsActive.do](https://members.iracing.com/membersite/member/MyTeamsActive.do) |
-| GetDriverCounts                     | -                     | JSON         | [Home.do](https://members.iracing.com/membersite/member/Home.do) |
-| GetDriverStats                      | -                     | JSON/Generic | [DriverLookup.do](https://members.iracing.com/membersite/member/DriverLookup.do) |
-| GetEventResultsAsCSV                | CSVEventResult        | CSV          | [EventResult.do](https://members.iracing.com/membersite/member/EventResult.do) |
-| GetForumAnnouncementPosts           | -                     | JSON         | [Home.do](https://members.iracing.com/membersite/member/Home.do) |
-| GetFriendsWatched                   | -                     | JSON         | [Home.do](https://members.iracing.com/membersite/member/Home.do) |
-| GetIgnoredLeagueRequests            | -                     | JSON         | [ignored_league_requests.jsp](https://members.iracing.com/membersite/member/ignored_league_requests.jsp) |
-| GetLaps                             | -                     | JSON         | [eventresult_laps.jsp](https://members.iracing.com/membersite/member/eventresult_laps.jsp) |
-| GetLapChart                         | -                     | JSON         | [eventresult_lapchart.jsp](https://members.iracing.com/membersite/member/eventresult_lapchart.jsp) |
-| GetLastRacesStats                   | -                     | JSON         | [CareerStats.do](https://members.iracing.com/membersite/member/CareerStats.do) |
-| GetLastSeries                       | -                     | JSON         | [CareerStats.do](https://members.iracing.com/membersite/member/CareerStats.do) |
-| GetLeagueDirectory                  | -                     | JSON/Generic | [LeagueDirectory.do](https://members.iracing.com/membersite/member/LeagueDirectory.do) |
-| ?                                   | -                     | ?            | [LeagueInvites.do](https://members.iracing.com/membersite/member/LeagueInvites.do) |
-| GetLeagueSessions                   | -                     | JSON         | [LeagueSessions.do](https://members.iracing.com/membersite/member/LeagueSessions.do) |
-| GetMember                           | -                     | JSON         | [Home.do](https://members.iracing.com/membersite/member/Home.do) |
-| GetMembersDivision                  | -                     | JSON         | [statsseries.jsp](https://members.iracing.com/membersite/member/statsseries.jsp) |
-| GetOpenSessions                     | -                     | JSON/Generic | [SeriesSessions.do](https://members.iracing.com/membersite/member/SeriesSessions.do) |
-| GetOpenSessionDrivers               | -                     | JSON         | [SeriesSessions.do](https://members.iracing.com/membersite/member/SeriesSessions.do) |
-| GetParticipationCredits             | -                     | JSON         | [CareerStats.do](https://members.iracing.com/membersite/member/CareerStats.do) |
-| GetPersonalBests                    | -                     | JSON         | [CareerStats.do](https://members.iracing.com/membersite/member/CareerStats.do) |
-| GetPrivateSessionResults            | -                     | JSON/Generic | [hostedresults.jsp](https://members.iracing.com/membersite/member/hostedresults.jsp) |
-| GetResults (discouraged)            | -                     | JSON/Generic | [results.jsp](https://members.iracing.com/membersite/member/results.jsp) |
-| GetSeasonSchedulePDF                | -                     | PDF          | [Home.do](https://members.iracing.com/membersite/member/Home.do) |
-| GetSeasons                          | -                     | JSON         | [SeriesStandings.do](https://members.iracing.com/membersite/member/SeriesStandings.do) |
-| GetSeasonStandings                  | -                     | JSON/Generic | [SeriesStandings.do](https://members.iracing.com/membersite/member/SeriesStandings.do) |
-| GetSeasonStandings                  | CSVSeasonStandings    | CSV          | [SeriesStandings.do](https://members.iracing.com/membersite/member/SeriesStandings.do) |
-| GetSeriesRaceResults                | SeriesRaceResults     | JSON/Generic | [SeriesRaceResults.do](https://members.iracing.com/membersite/member/SeriesRaceResults.do) |
-| GetSessionDrivers                   | SessionDrivers        | JSON         | [spectator.jsp](https://members.iracing.com/membersite/member/spectator.jsp) |
-| GetSessionTimes                     | -                     | JSON/Generic | [SeriesSessions.do](https://members.iracing.com/membersite/member/SeriesSessions.do) |
-| GetSpectatorSessions                | SpectatorSessions     | JSON         | [spectator.jsp](https://members.iracing.com/membersite/member/spectator.jsp) |
-| GetSubsessionResults                | -                     | JSON         | [EventResult.do](https://members.iracing.com/membersite/member/EventResult.do) |
-| GetTeamDirectory                    | -                     | JSON/Generic | [MyTeamsAll.do](https://members.iracing.com/membersite/member/MyTeamsAll.do) |
-| GetTeamMembers                      | -                     | JSON         | [MyTeams.do](https://members.iracing.com/membersite/member/MyTeams.do) |
-| GetTeamMembership                   | -                     | JSON         | [MyTeams.do](https://members.iracing.com/membersite/member/MyTeams.do) |
-| GetTeamSessions                     | -                     | ?            | [MyTeams.do](https://members.iracing.com/membersite/member/MyTeams.do) |
-| GetTeamStandings                    | -                     | JSON         | [statsseries_team.jsp](https://members.iracing.com/membersite/member/statsseries_team.jsp) |
-| GetTeamStandings                    | -                     | CSV          | [statsseries_team.jsp](https://members.iracing.com/membersite/member/statsseries_team.jsp) |
-| GetTeamWall                         | -                     | JSON         | [MyTeams.do](https://members.iracing.com/membersite/member/MyTeams.do) |
-| GetTotalSessionJoinedCountsBySeason | -                     | (JSON)       | [Series.do](https://members.iracing.com/membersite/member/Series.do) |
-| GetTournaments                      | -                     | JSON         | [tourneyresults.jsp](https://members.iracing.com/membersite/member/tourneyresults.jsp) |
-| GetTournamentRoundDetails           | -                     | JSON         | [tourneyresults.jsp](https://members.iracing.com/membersite/member/tourneyresults.jsp) |
-| GetWorldRecords                     | -                     | JSON/Generic | [worldrecords.jsp](https://members.iracing.com/membersite/member/worldrecords.jsp) |
-| GetYearlyStats                      | -                     | JSON         | [CareerStats.do](https://members.iracing.com/membersite/member/CareerStats.do) |
+| Endpoint                            | DJiRData-Type          | Fromat       | Discovered on |
+| ----------------------------------- | ---------------------- | :----------: | ------------- |
+| GetAllSubsessions                   | AllSubsessions         | JSON         | [EventResult.do](https://members.iracing.com/membersite/member/EventResult.do) |
+| GetCareerStats                      | CareerStats            | JSON         | [CareerStats.do](https://members.iracing.com/membersite/member/CareerStats.do) |
+| GetCarsDriven                       | CarsDriven             | JSON         | [CareerStats.do](https://members.iracing.com/membersite/member/CareerStats.do) |
+| GetChartData                        | ChartData              | JSON         | [CareerStats.do](https://members.iracing.com/membersite/member/CareerStats.do) |
+| GetCustTeamSessions                 | CustTeamSessions       | JSON         | [MyTeamsActive.do](https://members.iracing.com/membersite/member/MyTeamsActive.do) |
+| GetDriverCounts                     | DriverCounts           | JSON         | [Home.do](https://members.iracing.com/membersite/member/Home.do) |
+| GetDriverStats                      | -                      | JSON/Generic | [DriverLookup.do](https://members.iracing.com/membersite/member/DriverLookup.do) |
+| GetDriverStatus                     | -                      | JSON         | [Home.do](https://members.iracing.com/membersite/member/Home.do) |
+| GetEventResultsAsCSV                | CSVEventResult         | CSV          | [EventResult.do](https://members.iracing.com/membersite/member/EventResult.do) |
+| GetForumAnnouncementPosts           | ForumAnnouncementPosts | JSON         | [Home.do](https://members.iracing.com/membersite/member/Home.do) |
+| GetFriendsWatched                   | -                      | JSON         | [Home.do](https://members.iracing.com/membersite/member/Home.do) |
+| GetIgnoredLeagueRequests            | -                      | JSON         | [ignored_league_requests.jsp](https://members.iracing.com/membersite/member/ignored_league_requests.jsp) |
+| GetLaps                             | Laps                   | JSON         | [eventresult_laps.jsp](https://members.iracing.com/membersite/member/eventresult_laps.jsp) |
+| GetLapChart                         | LapChart               | JSON         | [eventresult_lapchart.jsp](https://members.iracing.com/membersite/member/eventresult_lapchart.jsp) |
+| GetLastRacesStats                   | -                      | JSON         | [CareerStats.do](https://members.iracing.com/membersite/member/CareerStats.do) |
+| GetLastSeries                       | LastSeries             | JSON         | [CareerStats.do](https://members.iracing.com/membersite/member/CareerStats.do) |
+| GetLeagueDirectory                  | -                      | JSON/Generic | [LeagueDirectory.do](https://members.iracing.com/membersite/member/LeagueDirectory.do) |
+| ?                                   | -                      | ?            | [LeagueInvites.do](https://members.iracing.com/membersite/member/LeagueInvites.do) |
+| GetLeagueSessions                   | -                      | JSON         | [LeagueSessions.do](https://members.iracing.com/membersite/member/LeagueSessions.do) |
+| GetMember                           | -                      | JSON         | [Home.do](https://members.iracing.com/membersite/member/Home.do) |
+| GetMembersDivision                  | -                      | JSON         | [statsseries.jsp](https://members.iracing.com/membersite/member/statsseries.jsp) |
+| GetOpenSessions                     | -                      | JSON/Generic | [SeriesSessions.do](https://members.iracing.com/membersite/member/SeriesSessions.do) |
+| GetOpenSessionDrivers               | -                      | JSON         | [SeriesSessions.do](https://members.iracing.com/membersite/member/SeriesSessions.do) |
+| GetParticipationCredits             | -                      | JSON         | [CareerStats.do](https://members.iracing.com/membersite/member/CareerStats.do) |
+| GetPersonalBests                    | -                      | JSON         | [CareerStats.do](https://members.iracing.com/membersite/member/CareerStats.do) |
+| GetPrivateSessionResults            | -                      | JSON/Generic | [hostedresults.jsp](https://members.iracing.com/membersite/member/hostedresults.jsp) |
+| GetResults (discouraged)            | -                      | JSON/Generic | [results.jsp](https://members.iracing.com/membersite/member/results.jsp) |
+| GetSeasonSchedulePDF                | -                      | PDF          | [Home.do](https://members.iracing.com/membersite/member/Home.do) |
+| GetSeasons                          | -                      | JSON         | [SeriesStandings.do](https://members.iracing.com/membersite/member/SeriesStandings.do) |
+| GetSeasonStandings                  | -                      | JSON/Generic | [SeriesStandings.do](https://members.iracing.com/membersite/member/SeriesStandings.do) |
+| GetSeasonStandings                  | CSVSeasonStandings     | CSV          | [SeriesStandings.do](https://members.iracing.com/membersite/member/SeriesStandings.do) |
+| GetSeriesRaceResults                | SeriesRaceResults      | JSON/Generic | [SeriesRaceResults.do](https://members.iracing.com/membersite/member/SeriesRaceResults.do) |
+| GetSessionDrivers                   | SessionDrivers         | JSON         | [spectator.jsp](https://members.iracing.com/membersite/member/spectator.jsp) |
+| GetSessionTimes                     | -                      | JSON/Generic | [SeriesSessions.do](https://members.iracing.com/membersite/member/SeriesSessions.do) |
+| GetSpectatorSessions                | SpectatorSessions      | JSON         | [spectator.jsp](https://members.iracing.com/membersite/member/spectator.jsp) |
+| GetSubsessionResults                | -                      | JSON         | [EventResult.do](https://members.iracing.com/membersite/member/EventResult.do) |
+| GetTeamDirectory                    | -                      | JSON/Generic | [MyTeamsAll.do](https://members.iracing.com/membersite/member/MyTeamsAll.do) |
+| GetTeamMembers                      | -                      | JSON         | [MyTeams.do](https://members.iracing.com/membersite/member/MyTeams.do) |
+| GetTeamMembership                   | -                      | JSON         | [MyTeams.do](https://members.iracing.com/membersite/member/MyTeams.do) |
+| GetTeamSessions                     | -                      | ?            | [MyTeams.do](https://members.iracing.com/membersite/member/MyTeams.do) |
+| GetTeamStandings                    | -                      | JSON         | [statsseries_team.jsp](https://members.iracing.com/membersite/member/statsseries_team.jsp) |
+| GetTeamStandings                    | -                      | CSV          | [statsseries_team.jsp](https://members.iracing.com/membersite/member/statsseries_team.jsp) |
+| GetTeamWall                         | -                      | JSON         | [MyTeams.do](https://members.iracing.com/membersite/member/MyTeams.do) |
+| GetTotalSessionJoinedCountsBySeason | -                      | (JSON)       | [Series.do](https://members.iracing.com/membersite/member/Series.do) |
+| GetTournaments                      | -                      | JSON         | [tourneyresults.jsp](https://members.iracing.com/membersite/member/tourneyresults.jsp) |
+| GetTournamentRoundDetails           | -                      | JSON         | [tourneyresults.jsp](https://members.iracing.com/membersite/member/tourneyresults.jsp) |
+| GetWorldRecords                     | -                      | JSON/Generic | [worldrecords.jsp](https://members.iracing.com/membersite/member/worldrecords.jsp) |
+| GetYearlyStats                      | -                      | JSON         | [CareerStats.do](https://members.iracing.com/membersite/member/CareerStats.do) |
 
 ## Contribution
 

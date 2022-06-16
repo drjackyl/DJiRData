@@ -1,3 +1,4 @@
+#if canImport(Foundation)
 import Foundation
 
 class JSONGenericDecoder {
@@ -30,3 +31,4 @@ class JSONGenericDecoder {
     }
     
 }
+#endif
