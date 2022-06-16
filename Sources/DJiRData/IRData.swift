@@ -45,6 +45,15 @@ public class IRData {
         }
     }
     
+    public func createCustTeamSessionsFromData(_ data: Data) throws -> CustTeamSessions {
+        do {
+            let sessions = try jsonDecoder.decode([CustTeamSessions.Session].self, from: data)
+            return CustTeamSessions(sessions: sessions)
+        } catch let error {
+            throw Error.failedToDecodeData(underlyingError: error)
+        }
+    }
+    
     public func createCSVEventResultFromData(_ data: Data) throws -> CSVEventResult {
         let doubleNewlineRange = try getRangeBetweenSummaryAndResults(data)
         

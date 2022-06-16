@@ -12,7 +12,7 @@ In the following table you can see all disocvered endpoints, their respective ty
 | GetCareerStats                      | CareerStats            | JSON         | [CareerStats.do](https://members.iracing.com/membersite/member/CareerStats.do) |
 | GetCarsDriven                       | CarsDriven             | JSON         | [CareerStats.do](https://members.iracing.com/membersite/member/CareerStats.do) |
 | GetChartData                        | ChartData              | JSON         | [CareerStats.do](https://members.iracing.com/membersite/member/CareerStats.do) |
-| GetCustTeamSessions                 | -                      | ?            | [MyTeamsActive.do](https://members.iracing.com/membersite/member/MyTeamsActive.do) |
+| GetCustTeamSessions                 | CustTeamSessions       | JSON         | [MyTeamsActive.do](https://members.iracing.com/membersite/member/MyTeamsActive.do) |
 | GetDriverCounts                     | DriverCounts           | JSON         | [Home.do](https://members.iracing.com/membersite/member/Home.do) |
 | GetDriverStats                      | -                      | JSON/Generic | [DriverLookup.do](https://members.iracing.com/membersite/member/DriverLookup.do) |
 | GetDriverStatus                     | -                      | JSON         | [Home.do](https://members.iracing.com/membersite/member/Home.do) |
