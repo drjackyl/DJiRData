@@ -8,11 +8,11 @@ class _JSONGenericUnkeyedDecodingContainerTests: XCTestCase {
         case notherKey = "2"
     }
     
-    var emptyModel: JSONGenericModel {
+    var emptyModel: Legacy.JSONGenericModel {
         .init(m: [:], d: [])
     }
     
-    var notSupportedContainer: _JSONGenericUnkeyedDecodingContainer = {
+    var notSupportedContainer: Legacy._JSONGenericUnkeyedDecodingContainer = {
         .init(data: .init(m: [:], d: []), codingPath: [])
     }()
     
@@ -25,7 +25,7 @@ class _JSONGenericUnkeyedDecodingContainerTests: XCTestCase {
     func testInit_CodingPath_IsSet() {
         let codingPath: [CodingKey] = [TwoKeys.aKey, TwoKeys.notherKey]
         
-        let container = _JSONGenericUnkeyedDecodingContainer(data: emptyModel, codingPath: codingPath)
+        let container = Legacy._JSONGenericUnkeyedDecodingContainer(data: emptyModel, codingPath: codingPath)
     
         let comparableCodingPath = codingPath.map { $0.stringValue }
         let comparableContainerCodingPath = container.codingPath.map { $0.stringValue }
@@ -33,34 +33,34 @@ class _JSONGenericUnkeyedDecodingContainerTests: XCTestCase {
     }
     
     func testInit_Count_IsSet() {
-        let data = JSONGenericModel(
+        let data = Legacy.JSONGenericModel(
             m: [TwoKeys.aKey.stringValue : "Irrelevant name of field"],
-            d: [[TwoKeys.aKey.stringValue : JSONGenericModel.Value(stringValue: "A Value")]]
+            d: [[TwoKeys.aKey.stringValue : Legacy.JSONGenericModel.Value(stringValue: "A Value")]]
         )
         
-        let container = _JSONGenericUnkeyedDecodingContainer(data: data, codingPath: [])
+        let container = Legacy._JSONGenericUnkeyedDecodingContainer(data: data, codingPath: [])
         
         XCTAssertEqual(container.count, 1)
     }
     
     func testInit_IsAtEnd_IsFalse() {
-        let data = JSONGenericModel(
+        let data = Legacy.JSONGenericModel(
             m: [TwoKeys.aKey.stringValue : "Irrelevant name of field"],
-            d: [[TwoKeys.aKey.stringValue : JSONGenericModel.Value(stringValue: "A Value")]]
+            d: [[TwoKeys.aKey.stringValue : Legacy.JSONGenericModel.Value(stringValue: "A Value")]]
         )
-        let container = _JSONGenericUnkeyedDecodingContainer(data: data, codingPath: [])
+        let container = Legacy._JSONGenericUnkeyedDecodingContainer(data: data, codingPath: [])
         
         XCTAssertFalse(container.isAtEnd)
     }
     
     func testInit_IsAtEnd_IsTrueWithEmptyModel() {
-        let container = _JSONGenericUnkeyedDecodingContainer(data: emptyModel, codingPath: [])
+        let container = Legacy._JSONGenericUnkeyedDecodingContainer(data: emptyModel, codingPath: [])
         
         XCTAssertTrue(container.isAtEnd)
     }
     
     func testInit_CurrentIndex_IsZero() {
-        let container = _JSONGenericUnkeyedDecodingContainer(data: emptyModel, codingPath: [])
+        let container = Legacy._JSONGenericUnkeyedDecodingContainer(data: emptyModel, codingPath: [])
         
         XCTAssertEqual(container.currentIndex, 0)
     }
@@ -82,20 +82,20 @@ class _JSONGenericUnkeyedDecodingContainerTests: XCTestCase {
             }
         }
         
-        let data = JSONGenericModel(
+        let data = Legacy.JSONGenericModel(
             m: [
                 TwoKeys.aKey.stringValue: "Irrelevant name of field",
                 TwoKeys.notherKey.stringValue: "Irrelevant name of field"
             ],
             d: [
                 [
-                    TwoKeys.aKey.stringValue: JSONGenericModel.Value(stringValue: "Hello"),
-                    TwoKeys.notherKey.stringValue: JSONGenericModel.Value(stringValue: "World!")
+                    TwoKeys.aKey.stringValue: Legacy.JSONGenericModel.Value(stringValue: "Hello"),
+                    TwoKeys.notherKey.stringValue: Legacy.JSONGenericModel.Value(stringValue: "World!")
                 ]
             ]
         )
         
-        var container = _JSONGenericUnkeyedDecodingContainer(data: data, codingPath: [])
+        var container = Legacy._JSONGenericUnkeyedDecodingContainer(data: data, codingPath: [])
         let result = try container.decode([Keyed].self)
         
         XCTAssertEqual(result.count, 1)

@@ -11,7 +11,7 @@ class _JSONGenericDecoderTest: XCTestCase {
         }
     }
     
-    var emptyModel: JSONGenericModel {
+    var emptyModel: Legacy.JSONGenericModel {
         .init(m: [:], d: [])
     }
     
@@ -23,12 +23,12 @@ class _JSONGenericDecoderTest: XCTestCase {
     
     func testJSONGenericDecoder_KeyedContainer() throws {
         let stringValue = "A Value"
-        let data: JSONGenericModel = .init(
+        let data: Legacy.JSONGenericModel = .init(
             m: [:],
-            d: [[Model.CodingKeys.aKey.stringValue : JSONGenericModel.Value(stringValue: stringValue)]]
+            d: [[Model.CodingKeys.aKey.stringValue : Legacy.JSONGenericModel.Value(stringValue: stringValue)]]
         )
         
-        let decoder = _JSONGenericDecoder(data, codingPath: [_JSONGenericDecoder.IndexKey(intValue: 0)!])
+        let decoder = Legacy._JSONGenericDecoder(data, codingPath: [Legacy._JSONGenericDecoder.IndexKey(intValue: 0)!])
         let container = try decoder.container(keyedBy: Model.CodingKeys.self)
         
         let result = try container.decode(String.self, forKey: Model.CodingKeys.aKey)
@@ -37,7 +37,7 @@ class _JSONGenericDecoderTest: XCTestCase {
     }
     
     func testJSONGenericDecoder_KeyedContainer_NoRowKey() {
-        let decoder = _JSONGenericDecoder(emptyModel, codingPath: [NotRowKey.nah])
+        let decoder = Legacy._JSONGenericDecoder(emptyModel, codingPath: [NotRowKey.nah])
         
         enum NotRowKey: String, CodingKey {
             case nah = "nah"
@@ -46,7 +46,7 @@ class _JSONGenericDecoderTest: XCTestCase {
         do {
             _ = try decoder.container(keyedBy: Model.CodingKeys.self)
         } catch let error {
-            guard case let _JSONGenericDecoder.Error.codingPathDoesNotEndWithIndexKey(codingPath) = error else {
+            guard case let Legacy._JSONGenericDecoder.Error.codingPathDoesNotEndWithIndexKey(codingPath) = error else {
                 XCTFail("Wrong error thrown"); return
             }
             
@@ -55,12 +55,12 @@ class _JSONGenericDecoderTest: XCTestCase {
     }
     
     func testJSONGenericDecoder_KeyedConainer_RowKeyIntValueIsNoPositiveInteger() {
-        let decoder = _JSONGenericDecoder(emptyModel, codingPath: [_JSONGenericDecoder.IndexKey(intValue: -1)!])
+        let decoder = Legacy._JSONGenericDecoder(emptyModel, codingPath: [Legacy._JSONGenericDecoder.IndexKey(intValue: -1)!])
         
         do {
             _ = try decoder.container(keyedBy: Model.CodingKeys.self)
         } catch let error {
-            guard case let _JSONGenericDecoder.Error.indexKeyIsNoPositiveInteger(rowKey) = error else {
+            guard case let Legacy._JSONGenericDecoder.Error.indexKeyIsNoPositiveInteger(rowKey) = error else {
                 XCTFail("Wrong error thrown"); return
             }
             
@@ -69,12 +69,12 @@ class _JSONGenericDecoderTest: XCTestCase {
     }
     
     func testJSONGenericDecoder_KeyedConainer_RowKeyOutOfBounds() {
-        let decoder = _JSONGenericDecoder(emptyModel, codingPath: [_JSONGenericDecoder.IndexKey(intValue: 1)!])
+        let decoder = Legacy._JSONGenericDecoder(emptyModel, codingPath: [Legacy._JSONGenericDecoder.IndexKey(intValue: 1)!])
         
         do {
             _ = try decoder.container(keyedBy: Model.CodingKeys.self)
         } catch let error {
-            guard case let _JSONGenericDecoder.Error.indexKeyIsOutOfBounds(row, numberOfElements) = error else {
+            guard case let Legacy._JSONGenericDecoder.Error.indexKeyIsOutOfBounds(row, numberOfElements) = error else {
                 XCTFail("Wrong error thrown"); return
             }
             
@@ -91,12 +91,12 @@ class _JSONGenericDecoderTest: XCTestCase {
     
     func testJSONGenericDecoder_UnkeyedContainer() throws {
         let stringValue = "A Value"
-        let data: JSONGenericModel = .init(
+        let data: Legacy.JSONGenericModel = .init(
             m: [:],
-            d: [[Model.CodingKeys.aKey.stringValue : JSONGenericModel.Value(stringValue: stringValue)]]
+            d: [[Model.CodingKeys.aKey.stringValue : Legacy.JSONGenericModel.Value(stringValue: stringValue)]]
         )
         
-        let decoder = _JSONGenericDecoder(data, codingPath: [])
+        let decoder = Legacy._JSONGenericDecoder(data, codingPath: [])
         
         let result = try Array<Model>(from: decoder)
         
